@@ -1,0 +1,86 @@
+.site-footer {
+	margin-top: 60px;
+
+	.site-footer__top {
+		padding: 21px 0;
+		background: #535253;
+
+			.icon--twitter {
+				width: 29px;
+				height: 24px;
+				background: url(../img/icon_twitter.png) no-repeat 0 0;
+				margin-right: 15px;
+			}
+			.b-twitter__text {
+				color: #fff;
+				font-size: 1.143em;
+			}
+	}
+	.site-footer__bottom {
+		padding: 105px 0;
+		background: #424242;
+
+			.box-text {
+				max-width: 300px;
+				width: 100%;
+				color: #fff;
+			}
+			.box-text__title {
+				font-size: 1.429em;
+				margin-bottom: 20px;
+				text-transform: uppercase;
+			}
+			.box-text__text {
+				color: #d0d0d0;
+				font-size: 0.714em;
+				text-transform: uppercase;
+			}
+
+			.footer-menu__item {
+				display: inline-block;
+				vertical-align: top;
+
+					> a {
+						color: #fff;
+						text-transform: uppercase;
+						font-size: 1em;
+
+						&:hover {text-decoration: underline;}
+					}
+
+					&:not(:last-child):after {
+						display: inline-block;
+						vertical-align: top;
+						margin: 0 5px;
+						content: '|';
+						color: #90856a;
+					}
+			}
+			.b-develop {
+				color: #fff;
+				font-size: 1.286em;
+				margin-top: 7px;
+				float: right;
+			}
+
+		.b-right {
+			margin-top: 45px;
+		}
+	}
+}
+
+
+//responsive
+@media(max-width: 768px) {
+	.site-footer .site-footer__bottom {
+		padding: 40px 0;
+	}
+	.site-footer .site-footer__bottom .b-right, .site-footer .site-footer__bottom .b-develop {
+		float: none;
+	}
+}
+@media(max-width: 479px) {
+	.site-footer .site-footer__top .b-twitter__text {
+		font-size: 1em;
+	}
+}

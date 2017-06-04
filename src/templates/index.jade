@@ -1,0 +1,78 @@
+doctype html
+html
+	head
+		meta(charset="utf8")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		title Test Sport Club
+		link(href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet")
+		link(rel="stylesheet", href="css/main.min.css")
+
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js")
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script(src="js/app.js")
+	body(ng-app="testTask")
+		header.site-header.position-static
+			div.middle
+				a(href="#" class="site-header__logo")
+					img(src="img/logo.png", alt="")
+				- var nameMenu = ['home', 'products'];
+				div.b-right
+					nav(role="navigation", class="nav inl_bl")
+						ul.nav__main-menu
+							for name in nameMenu
+								li.main-menu__item
+									a(href="#")= name
+					div.basket-small.inl_bl
+						a(href="#")
+							i.icon.icon--basket
+		section.section.banner-top
+			div.banner-top__text
+				div.b-inner
+					h1.banner-top__title Our clothing , your comfort
+					p.
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br> tempor incididunt ut labore et dolore<br> magna aliqua.
+			a(class="arrow-next", scroll-to-item scroll-to="#to-scroll")
+				i.icon.icon--arrow_down
+		div.content-area
+			section(class="catalog-widget", ng-controller="productsCtrl")
+				div.filter.catalog-widget__filter#to-scroll
+					div.middle
+						form(action="#", method="", class="form")
+							div.b-checkboxes.inl_bl
+								dl.form__section(ng-repeat="(key, enabled) in showCategory")
+									div.wrp-ch
+										input(type="checkbox", id="ch-{{$id}}", class="form__checkbox" ng-model="showCategory[key]", ng-change="changeFilter(key.toLowerCase())")
+										label(for="ch-{{$id}}", class="form__label")
+									label(class="title", for="ch-{{$id}}" ) {{key}}
+							a.btn-stl.btn-stl--brown.button-all-products(href="javascript:void(0)", ng-click="clearAll()") see all prodRobotoucts
+				div.catalog-widget__products.items-product
+					div.middle
+							div.items-product__item(ng-repeat="item in data.items", ng-if="!changeFilter(item.type.toLowerCase())")
+								div.b-top
+									div.custom-select
+										select
+											option(ng-repeat="option in item.options") {{option}}
+								div.img-box
+									img(src="uploads/{{item.img}}.png" alt="")
+								div.b-bottom
+									span.b-left.b-bottom__name {{item.name}}
+									span.b-right.b-bottom__cost {{item.price}}
+										span €
+		footer.site-footer
+			div.site-footer__top
+				div.middle
+					div.b-twitter
+						i.icon.icon--twitter
+						span.b-twitter__text “ E-commerce psd theme available ”
+			div.site-footer__bottom
+				div.middle
+					div.b-left.inl_bl.box-text
+						p.box-text__title Trekking
+						p.box-text__text.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					div.b-right.fl_r
+						nav(role="navigation", class="nav", ng-controller="menuCtrl")
+							ul.nav__footer-menu.footer-menu
+								li(class="footer-menu__item", ng-repeat="key in data.footerMenu")
+									a(href="{{key.link}}", title="{{key.title}}") {{key.name}}
+						p.b-develop Design by gianluca cosetta

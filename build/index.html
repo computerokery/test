@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Sport Club</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="testTask">
+    <header class="site-header position-static">
+      <div class="middle"><a href="#" class="site-header__logo"><img src="img/logo.png" alt=""></a>
+        <div class="b-right">
+          <nav role="navigation" class="nav inl_bl">
+            <ul class="nav__main-menu">
+              <li class="main-menu__item"><a href="#">home</a></li>
+              <li class="main-menu__item"><a href="#">products</a></li>
+            </ul>
+          </nav>
+          <div class="basket-small inl_bl"><a href="#"><i class="icon icon--basket"></i></a></div>
+        </div>
+      </div>
+    </header>
+    <section class="section banner-top">
+      <div class="banner-top__text">
+        <div class="b-inner">
+          <h1 class="banner-top__title">Our clothing , your comfort</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br> tempor incididunt ut labore et dolore<br> magna aliqua.</p>
+        </div>
+      </div><a scroll-to-item scroll-to="#to-scroll" class="arrow-next"><i class="icon icon--arrow_down"></i></a>
+    </section>
+    <div class="content-area">
+      <section ng-controller="productsCtrl" class="catalog-widget">
+        <div id="to-scroll" class="filter catalog-widget__filter">
+          <div class="middle">
+            <form action="#" method="" class="form">
+              <div class="b-checkboxes inl_bl">
+                <dl ng-repeat="(key, enabled) in showCategory" class="form__section">
+                  <div class="wrp-ch">
+                    <input type="checkbox" id="ch-{{$id}}" ng-model="showCategory[key]" ng-change="changeFilter(key.toLowerCase())" class="form__checkbox">
+                    <label for="ch-{{$id}}" class="form__label"></label>
+                  </div>
+                  <label for="ch-{{$id}}" class="title">{{key}}</label>
+                </dl>
+              </div><a href="javascript:void(0)" ng-click="clearAll()" class="btn-stl btn-stl--brown button-all-products">see all prodRobotoucts</a>
+            </form>
+          </div>
+        </div>
+        <div class="catalog-widget__products items-product">
+          <div class="middle">
+            <div ng-repeat="item in data.items" ng-if="!changeFilter(item.type.toLowerCase())" class="items-product__item">
+              <div class="b-top">
+                <div class="custom-select">
+                  <select>
+                    <option ng-repeat="option in item.options">{{option}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="img-box"><img src="uploads/{{item.img}}.png" alt=""></div>
+              <div class="b-bottom"><span class="b-left b-bottom__name">{{item.name}}</span><span class="b-right b-bottom__cost">{{item.price}}<span>€</span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer">
+      <div class="site-footer__top">
+        <div class="middle">
+          <div class="b-twitter"><i class="icon icon--twitter"></i><span class="b-twitter__text">“ E-commerce psd theme available ”</span></div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <div class="middle">
+          <div class="b-left inl_bl box-text">
+            <p class="box-text__title">Trekking</p>
+            <p class="box-text__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <div class="b-right fl_r">
+            <nav role="navigation" ng-controller="menuCtrl" class="nav">
+              <ul class="nav__footer-menu footer-menu">
+                <li ng-repeat="key in data.footerMenu" class="footer-menu__item"><a href="{{key.link}}" title="{{key.title}}">{{key.name}}</a></li>
+              </ul>
+            </nav>
+            <p class="b-develop">Design by gianluca cosetta</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
